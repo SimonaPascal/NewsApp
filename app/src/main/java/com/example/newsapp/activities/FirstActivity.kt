@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import com.example.newsapp.R
-import com.example.newsapp.ui.login.LoginActivity
+
 
 class FirstActivity : AppCompatActivity() {
     private lateinit var registerButton: Button

@@ -6,7 +6,7 @@
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="welcome">"Welcome !"</string>
-    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_username">Not a valid email address</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="title_activity_register">RegisterActivity</string>
@@ -26,4 +26,18 @@
     <string name="male">Male</string>
     <string name="female">Female</string>
     <string name="gender">Gender</string>
+    <string name="full_name">Full Name</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="login_failed_message">The email address or password are incorrect.</string>
+    <string name="invalid_name">Please fill in the full name input.</string>
+    <string name="invalid_phone">A phone number has 10 digits.</string>
+    <string name="registration_failed_message">Registration failed</string>
+    <string name="science">SCIENCE</string>
+    <string name="sports">SPORTS</string>
+    <string name="business">BUSINESS</string>
+    <string name="entertainment">ENTERTAINMENT</string>
+    <string name="general">GENERAL</string>
+    <string name="health">HEALTH</string>
+    <string name="continue_button">Continue</string>
+    <string name="pick_3_topics_to_start_reading_and_saving_articles">Pick 3 topics to start reading and saving articles.</string>
 </resources>
