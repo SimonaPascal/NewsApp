@@ -7,17 +7,14 @@ import android.os.Handler
 import android.os.IBinder
 import android.util.Log
 import androidx.annotation.RequiresApi
-import java.lang.Exception
-import java.net.HttpURLConnection
-import java.net.InetAddress
 import java.net.URL
-import java.net.URLDecoder
-import java.nio.charset.StandardCharsets
+
 
 class JSONService:Service() {
 
-    private val request = "https://gnews.io/api/v4/search?q=covid&country=ro"
-    private val token = "&token=49946991f1f8a607ec413657828cea30"
+    private var request = "https://gnews.io/api/v4/"
+    private var token = "&token=49946991f1f8a607ec413657828cea30"
+    private var url = ""
     private lateinit var mHandler: Handler
     private lateinit var mRunnable: Runnable
 
@@ -27,6 +24,29 @@ class JSONService:Service() {
 
     @RequiresApi(Build.VERSION_CODES.KITKAT)
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
+        val extras = intent.extras
+        if(extras == null) {
+            url = request + "top-headlines?country=ro" + token
+        } else {
+            val categoriesString = extras.get("categories").toString()
+            val categories: List<String> = (categoriesString?.split(","))
+            url = request + "search?q=";
+
+            var index = 0
+            for(item in categories)
+            {
+                if(index != 0)
+                {
+                    url = url + " OR "
+
+                }
+                index++
+                url = url + item
+            }
+
+            url = url + "&country=ro" + token
+        }
+
         mRunnable = Runnable { getJSON() }
         Thread(mRunnable).start()
         return START_STICKY
@@ -51,12 +71,6 @@ class JSONService:Service() {
     @RequiresApi(Build.VERSION_CODES.KITKAT)
     private fun getJSON() {
         val intent = Intent("ACTION_JSON")
-        val url = request + token
-        try {
-            val urlResponse = URL(url).readText()
-        } catch (e : Exception) {
-            e.printStackTrace()
-        }
         val result = URL(url).readText()
         val parsedJSON: String = result
         intent.putExtra("JSON", parsedJSON)

@@ -41,6 +41,7 @@ class ListNewsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         //thisContext = this.requireActivity()
         val intent = Intent(context, JSONService::class.java)
+        intent.putExtra("categories", "covid,musk");
         context?.startService(intent)
         Toast.makeText(context, "Aducem datele!", Toast.LENGTH_LONG).show();
 
