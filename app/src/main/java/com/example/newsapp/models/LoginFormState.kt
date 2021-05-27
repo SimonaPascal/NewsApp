@@ -1,8 +1,6 @@
-package com.example.newsapp.ui.login
+package com.example.newsapp.models
 
-/**
- * Data validation state of the login form.
- */
+
 data class LoginFormState(
     val usernameError: Int? = null,
     val passwordError: Int? = null,
