@@ -6,6 +6,7 @@ import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
@@ -34,8 +35,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
     private lateinit var binding: ActivityMapsBinding
     private lateinit var lastLocation: Location
     private lateinit var fusedLocationClient: FusedLocationProviderClient
-
-    private lateinit var locationsArray: ArrayList<com.example.newsapp.models.Location>
 
     val TAG = "TAGOVI"
     private lateinit var currentLatLng: LatLng
@@ -85,14 +84,14 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
             if (location != null) {
                 lastLocation = location
                 currentLatLng = LatLng(location.latitude, location.longitude)
-                placeMarkerOnMap(currentLatLng)
+                placeMeOnMap(currentLatLng)
                 mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 12f))
                 putMarkers(currentLatLng)
             }
         }
     }
 
-    private fun placeMarkerOnMap(currentLatLng: LatLng) {
+    private fun placeMeOnMap(currentLatLng: LatLng) {
         val markerOptions = MarkerOptions().position(currentLatLng)
         markerOptions.title("$currentLatLng")
         mMap.addMarker(markerOptions)
@@ -121,10 +120,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         val stringRequest = StringRequest(
             Request.Method.GET, url,
             { response ->
-//                Log.i(TAG, response.toString())
                 parseResponse(response)
             },
-            { Log.i(TAG, "BAD") })
+            { Toast.makeText(applicationContext,"There was an error with the Google Maps",Toast.LENGTH_SHORT).show()  })
 
         queue.add(stringRequest)
     }
@@ -151,16 +149,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
                         -1.0
                     }
                     var address = item.getString("vicinity")
-
-//                    locationsArray.put(
-//                        com.example.newsapp.models.Location(
-//                            name,
-//                            lat,
-//                            lon,
-//                            rating,
-//                            address
-//                        )
-//                    )
 
                     placeHospitalOnMap(
                             name,
