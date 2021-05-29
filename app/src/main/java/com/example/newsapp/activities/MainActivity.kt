@@ -2,33 +2,41 @@ package com.example.newsapp.activities
 
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.*
 import com.example.newsapp.R
+import com.example.newsapp.viewmodels.Observable
+import com.google.android.material.navigation.NavigationView
 
 
 class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelectedListener {
 
     lateinit var navController: NavController
+    private lateinit var viewModel: Observable
     private lateinit var appBarConfiguration: AppBarConfiguration
+    var categories: ArrayList<String> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         navController = Navigation.findNavController(this, R.id.nav_host_fragment)
         var drawer_layout = findViewById<DrawerLayout>(R.id.drawer_layout);
         NavigationUI.setupActionBarWithNavController(this, navController, drawer_layout)
         var nav_view = findViewById<NavigationView>(R.id.nav_view)
         nav_view.setNavigationItemSelectedListener(this)
+
+        val intent = intent
+        categories = intent.getStringArrayListExtra("categories") as ArrayList<String>
+        viewModel = this.run {
+            ViewModelProviders.of(this).get(Observable::class.java)
+        } ?: throw Exception("Invalid Activity")
+        viewModel.data.value = categories
+
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -43,9 +51,13 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
         when (item.itemId) {
             R.id.nav_lista_stiri -> {
                 navController.navigate(R.id.nav_list_news)
+
                 return true
             }
         }
         return false
     }
+
+
+
 }
