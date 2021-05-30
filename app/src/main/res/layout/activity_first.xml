@@ -30,7 +30,7 @@
         android:layout_marginBottom="350dp"
 
         android:text="@string/log_in_button_text"
-        app:backgroundTint="@color/purple_500"
+        android:backgroundTint="@color/purple_500"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,24 +56,6 @@
         app:layout_constraintTop_toBottomOf="@id/login_button_first_page"
         app:layout_constraintVertical_bias="0.09" />
 
-    <Button
-        android:id="@+id/news_first_page"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginRight="48dp"
-        android:layout_marginBottom="25dp"
-        android:text="News"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/register_button_first_page"
-        app:layout_constraintVertical_bias="0.09" />
 
     <TextView
         android:id="@+id/textViewFirstPage"
@@ -86,7 +68,7 @@
         android:layout_marginEnd="48dp"
         android:layout_marginRight="48dp"
         android:layout_marginBottom="5dp"
-        android:text="Welcome back!"
+        android:text="@string/welcome_back"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textView2FirstPage"

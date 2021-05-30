@@ -18,12 +18,12 @@ class FirstActivity : AppCompatActivity() {
         init()
         loginButtonPressed()
         registerButtonPressed()
-        newsButtonPressed()
+
     }
     fun init(){
         this.registerButton = findViewById(R.id.register_button_first_page)
         this.loginButton = findViewById(R.id.login_button_first_page)
-        this.newsButton = findViewById(R.id.news_first_page)
+
     }
     fun registerButtonPressed() = this.registerButton.setOnClickListener {
         val intent = Intent(this, RegisterActivity::class.java)
@@ -36,8 +36,5 @@ class FirstActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun newsButtonPressed() = this.newsButton.setOnClickListener {
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
-    }
+
 }

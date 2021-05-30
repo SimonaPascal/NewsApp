@@ -40,10 +40,5 @@
     <string name="health">HEALTH</string>
     <string name="continue_button">Continue</string>
     <string name="pick_3_topics_to_start_reading_and_saving_articles">Pick 3 topics to start reading and saving articles.</string>
-    <string name="appwidget_text">NewsApp</string>
-    <string name="configure">Configure</string>
-    <string name="add_widget">Add widget</string>
-    <string name="author">Author</string>
-    <string name="title">Title</string>
-    <string name="description">Description</string>
+    <string name="welcome_back">Welcome back!</string>
 </resources>
