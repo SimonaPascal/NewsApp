@@ -5,7 +5,9 @@ import android.content.Intent
 import android.widget.ListView
 import android.widget.RemoteViews
 import android.widget.RemoteViewsService
+import com.example.newsapp.ListNewsFragment
 import com.example.newsapp.R
+import com.example.newsapp.adapters.ArticleAdapter
 import com.example.newsapp.data.model.Article
 import com.example.newsapp.services.JSONService
 import org.json.JSONArray
@@ -13,14 +15,21 @@ import org.json.JSONObject
 
 class AdapterWidget(val context : Context) : RemoteViewsService.RemoteViewsFactory {
 
-    private lateinit var articleList : ArrayList<Article>
+    private var articleList : ArrayList<Article> = ArrayList()
 
     override fun onCreate() {
 
     }
 
     override fun onDataSetChanged() {
+        val author = "HardcodedTestAuthor"
+        val title = "HardcodedTestTitle"
+        val description = "HardcodedTestDescription"
+        val url = "NoUrl"
+        val urlToImage = "NoImg"
 
+        val article = Article(author, title, description, url, urlToImage);
+        articleList.add(article)
     }
 
     override fun onDestroy() {
