@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.newsapp.activities.MainActivity
 import com.example.newsapp.adapters.ArticleAdapter
 import com.example.newsapp.data.model.Article
+import com.example.newsapp.database.DatabaseManager
 import com.example.newsapp.services.JSONService
 import com.example.newsapp.viewmodels.Observable
 import org.json.JSONArray
@@ -72,6 +73,8 @@ class ListNewsFragment : Fragment() {
             var jsonObject = JSONObject(json)
             val articoleString: String = jsonObject.getString("articles")
             val articoleArray = JSONArray(articoleString)
+            val database = DatabaseManager.getInstance(context)
+            database.articleDao()?.deleteArticles()
             if(articoleArray != null) {
                 for(i in 0..articoleArray.length()-1) {
                     var item = articoleArray.getJSONObject(i);
@@ -83,6 +86,7 @@ class ListNewsFragment : Fragment() {
                     var urlToImage = item.getString("image")
 
                     val article = Article(author, title, description, url, urlToImage);
+                    database.articleDao()?.insert(article)
                     list.add(article)
                 }
 

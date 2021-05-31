@@ -2,16 +2,25 @@ package com.example.newsapp.widget
 
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
+import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
+import android.widget.ListView
 import android.widget.RemoteViews
 import com.example.newsapp.R
+import com.example.newsapp.adapters.ArticleAdapter
+import com.example.newsapp.data.model.Article
+import com.example.newsapp.services.JSONService
+import org.json.JSONArray
+import org.json.JSONObject
 
 /**
  * Implementation of App Widget functionality.
  * App Widget Configuration implemented in [NewsWidgetConfigureActivity]
  */
 class NewsWidget : AppWidgetProvider() {
+
     override fun onUpdate(
         context: Context,
         appWidgetManager: AppWidgetManager,
@@ -28,14 +37,6 @@ class NewsWidget : AppWidgetProvider() {
         for (appWidgetId in appWidgetIds) {
             deleteTitlePref(context, appWidgetId)
         }
-    }
-
-    override fun onEnabled(context: Context) {
-        // Enter relevant functionality for when the first widget is created
-    }
-
-    override fun onDisabled(context: Context) {
-        // Enter relevant functionality for when the last widget is disabled
     }
 }
 
