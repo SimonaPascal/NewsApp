@@ -1,5 +1,6 @@
 package com.example.newsapp.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -51,6 +52,13 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
         when (item.itemId) {
             R.id.nav_lista_stiri -> {
                 navController.navigate(R.id.nav_list_news)
+
+                return true
+            }
+            R.id.nav_maps ->{
+                val intent = Intent(this, MapsActivity::class.java).apply {
+                }
+                startActivity(intent)
 
                 return true
             }
