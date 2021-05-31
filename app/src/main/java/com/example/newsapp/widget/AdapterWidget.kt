@@ -22,9 +22,15 @@ class AdapterWidget(val context : Context) : RemoteViewsService.RemoteViewsFacto
     }
 
     override fun onDataSetChanged() {
-        val author = "HardcodedTestAuthor"
-        val title = "HardcodedTestTitle"
-        val description = "HardcodedTestDescription"
+        val author = "ProSport"
+        val title = "Team Of The Season Ciro Immobile: unul dintre cele mai ofensive carduri din FIFA 21!"
+        val description = "Seria SBC pare să fie din ce în ce mai populară în FIFA 21, EA Sports lansând în această perioadă o mulțime de carduri interesante. De la un design special și atribute crescute considerabil, cardurile au reușit să schimbe modul Ultimate Team și să le ofere gamerilor un conținut unic.\n" +
+                "\n" +
+                "Bineînțeles, evenimentele de genul reprezintă și o sursă importantă de venit pentru EA Sports. Cardurile sunt introduse în pachetele promoționale, iar unii gameri aleg să utilizeze bani reali pentru deblocarea acestora.\n" +
+                "\n" +
+                "Unul dintre cele mai bune SBC-uri vine din eSeria A și îi aparține lui Ciro Immobile, pe poziția de atacant central. Cu o viteză de 93, un șut de 96, pasă de 82 și dribling de 92, cardul are o serie de atribute foarte bune și poate face diferența în careul advers.\n" +
+                "\n" +
+                "SBC-ul costă în jur de 132.000 de monede FUT pe PlayStation, 149.000 pe Xbox și 137.000 pe PC. Dacă doriți să finalizați TOTS Immobile SBC, va trebui să prezentați două echipe diferite. Prima echipă trebuie să aibă 83 de calificative, cu minimum 75 de chimie, trebuie să aibă un jucător italian și cel puțin o carte Inform sau TOTS. A doua soluție necesită o echipă cu 84 de calificative cu minimum 70 de chimie, cel puțin o carte Inform sau TOTS și un jucător din eSerie A."
         val url = "NoUrl"
         val urlToImage = "NoImg"
 
